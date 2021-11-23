@@ -18,7 +18,7 @@ With `fck.Error`:
 ```
 And with `fck.Errorf`:
 ```
-	const err error = fck.Errorf("bad value for id %q", id)
+	var err error = fck.Errorf("bad value for id %q", id)
 ```
 
 **One thing to notice is that `fck.Error` errors can be a Go `const`.**
