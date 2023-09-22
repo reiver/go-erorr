@@ -5,8 +5,5 @@ import (
 )
 
 func Errorf(format string, a ...interface{}) error {
-
-	var s string = fmt.Sprintf(format, a...)
-
-	return Error(s)
+	return fmt.Errorf(format, a...)
 }
