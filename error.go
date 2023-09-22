@@ -1,4 +1,4 @@
-package fck
+package erorr
 
 type Error string
 

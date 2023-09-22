@@ -1,24 +1,26 @@
-# go-fck
+# go-erorr
 
-Package **fck** implements tools to create and manipulate errors.
+Package **erorr** implements tools to create and manipulate errors.
+
+(This package used to be called "fck".)
 
 ## Documention
 
-Online documentation, which includes examples, can be found at: http://godoc.org/github.com/reiver/go-fck
+Online documentation, which includes examples, can be found at: http://godoc.org/sourcecode.social/reiver/go-erorr
 
-[![GoDoc](https://godoc.org/github.com/reiver/go-fck?status.svg)](https://godoc.org/github.com/reiver/go-fck)
+[![GoDoc](https://godoc.org/sourcecode.social/reiver/go-erorr?status.svg)](https://godoc.org/sourcecode.social/reiver/go-erorr)
 
 ## Creating Errors
 
 There are two ways to create errors —
 
-With `fck.Error`:
+With `erorr.Error`:
 ```
-	const err error = fck.Error("internal-error")
+	const err error = erorr.Error("internal-error")
 ```
-And with `fck.Errorf`:
+And with `erorr.Errorf`:
 ```
-	var err error = fck.Errorf("bad value for id %q", id)
+	var err error = erorr.Errorf("bad value for id %q", id)
 ```
 
-**One thing to notice is that `fck.Error` errors can be a Go `const`.**
+**One thing to notice is that `erorr.Error` errors can be a Go `const`.**

@@ -1,4 +1,4 @@
-package fck
+package erorr
 
 import (
 	"fmt"
