@@ -1,3 +1,3 @@
-module sourcecode.social/reiver/go-erorr
+module github.com/reiver/go-erorr
 
 go 1.17

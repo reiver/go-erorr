@@ -6,9 +6,9 @@ Package **erorr** implements tools to create and manipulate errors, for the Go p
 
 ## Documention
 
-Online documentation, which includes examples, can be found at: http://godoc.org/sourcecode.social/reiver/go-erorr
+Online documentation, which includes examples, can be found at: http://godoc.org/github.com/reiver/go-erorr
 
-[![GoDoc](https://godoc.org/sourcecode.social/reiver/go-erorr?status.svg)](https://godoc.org/sourcecode.social/reiver/go-erorr)
+[![GoDoc](https://godoc.org/github.com/reiver/go-erorr?status.svg)](https://godoc.org/github.com/reiver/go-erorr)
 
 ## Creating Errors
 
