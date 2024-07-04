@@ -15,12 +15,17 @@ Online documentation, which includes examples, can be found at: http://godoc.org
 There are two ways to create errors —
 
 With `erorr.Error`:
+
 ```
 	const err error = erorr.Error("internal-error")
 ```
+
+**NOTICE THAT THAT ERROR IS A `const` RATHER THAN A `var`.**
+
+**Errors creating using `erorr.Error` can be a Go `const`.**
+
 And with `erorr.Errorf`:
+
 ```
 	var err error = erorr.Errorf("bad value for id %q", id)
 ```
-
-**One thing to notice is that `erorr.Error` errors can be a Go `const`.**
