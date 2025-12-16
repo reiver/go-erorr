@@ -1,3 +1,3 @@
-module github.com/reiver/go-erorr
+module codeberg.org/reiver/go-erorr
 
 go 1.17

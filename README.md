@@ -6,9 +6,9 @@ Package **erorr** implements tools to create and manipulate errors, for the Go p
 
 ## Documention
 
-Online documentation, which includes examples, can be found at: http://godoc.org/github.com/reiver/go-erorr
+Online documentation, which includes examples, can be found at: http://godoc.org/codeberg.org/reiver/go-erorr
 
-[![GoDoc](https://godoc.org/github.com/reiver/go-erorr?status.svg)](https://godoc.org/github.com/reiver/go-erorr)
+[![GoDoc](https://godoc.org/codeberg.org/reiver/go-erorr?status.svg)](https://godoc.org/codeberg.org/reiver/go-erorr)
 
 ## Creating Errors
 
@@ -34,14 +34,14 @@ And with `erorr.Errorf`:
 
 To import package **erorr** use `import` code like the follownig:
 ```
-import "github.com/reiver/go-erorr"
+import "codeberg.org/reiver/go-erorr"
 ```
 
 ## Installation
 
 To install package **erorr** do the following:
 ```
-GOPROXY=direct go get https://github.com/reiver/go-erorr
+GOPROXY=direct go get https://codeberg.org/reiver/go-erorr
 ```
 
 ## Author
