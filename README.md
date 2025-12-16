@@ -1,6 +1,6 @@
 # go-erorr
 
-Package **erorr** implements tools to create and manipulate errors, for the Go programming language.
+Package **erorr** provides tools for creating and manipulating **errors**, for the Go programming language.
 
 (This package used to be called "fck".)
 
