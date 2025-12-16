@@ -1,8 +1,13 @@
 package erorr
 
 type WrappedErrors struct {
-	errs []error
-	msg  string
+	callTrace string
+	errs      []error
+	msg       string
+}
+
+func (receiver WrappedErrors) CallTrace() string {
+	return receiver.callTrace
 }
 
 func (receiver WrappedErrors) Error() string {

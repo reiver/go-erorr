@@ -2,8 +2,9 @@ package erorr
 
 import (
 	"fmt"
-
 	"strings"
+
+	"github.com/reiver/go-calltrace"
 )
 
 // Errorf returns a formatted error.
@@ -11,7 +12,10 @@ import (
 // If an one or more errors are passed in the parameters of Errorf, then they are wrapped.
 // If there is one error, then a [WrappedError] is returned.
 // If there is more-than one error, then a [WrappedErrors] is returned.
+// If there are no errors, then a [StampedError] is returned.
 func Errorf(format string, a ...any) error {
+
+	callTrace := calltrace.String()
 
 	format = strings.ReplaceAll(format, "%w", "%s")
 
@@ -21,16 +25,21 @@ func Errorf(format string, a ...any) error {
 
 	switch len(errs) {
 	case 0:
-		return Error(msg)
+		return StampedError{
+			callTrace:callTrace,
+			msg:msg,
+		}
 	case 1:
 		err := errs[0]
 
 		return WrappedError{
+			callTrace:callTrace,
 			err:err,
 			msg:msg,
 		}
 	default:
 		return WrappedErrors{
+			callTrace:callTrace,
 			errs:errs,
 			msg:msg,
 		}
