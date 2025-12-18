@@ -1,5 +1,9 @@
 package erorr
 
+import (
+	"github.com/reiver/go-calltrace"
+)
+
 type StampedError struct {
 	callTrace string
 	msg       string
