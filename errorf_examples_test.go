@@ -12,10 +12,10 @@ func ExampleErrorf_oneError() {
 
 	// ...
 
-	service := "AuthService"
-
 	var err error = ErrFailure
-	err = erorr.Errorf("Uh oh, something bad happened to %s: %w", service, err)
+
+	service := "AuthService"
+	err = erorr.Errorf("Uh oh, something bad happened to %s: %w", service, err) // <---------
 
 	fmt.Printf("error-message: %s\n", err)
 	fmt.Printf("errors-type: %T\n", err)
@@ -33,8 +33,7 @@ func ExampleErrorf_twoErrors() {
 	// ...
 
 	service := "AuthService"
-
-	err := erorr.Errorf("Uh oh, some bad things happened to %s: %w and %w", service, ErrFailure, ErrProblem)
+	err := erorr.Errorf("Uh oh, some bad things happened to %s: %w and %w", service, ErrFailure, ErrProblem) // <---------
 
 	fmt.Printf("error-message: %s\n", err)
 	fmt.Printf("errors-type: %T\n", err)
