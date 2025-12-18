@@ -1,9 +1,23 @@
 package erorr
 
+import (
+	"github.com/reiver/go-calltrace"
+)
+
 type WrappedErrors struct {
 	callTrace string
 	errs      []error
 	msg       string
+}
+
+func createWrappedErrors(msg string, errs ...error) WrappedErrors {
+	callTrace := calltrace.String()
+
+	return WrappedErrors{
+		callTrace:callTrace,
+		errs:errs,
+		msg:msg,
+	}
 }
 
 func (receiver WrappedErrors) CallTrace() string {

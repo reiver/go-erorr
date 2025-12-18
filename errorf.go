@@ -32,17 +32,9 @@ func Errorf(format string, a ...any) error {
 	case 1:
 		err := errs[0]
 
-		return WrappedError{
-			callTrace:callTrace,
-			err:err,
-			msg:msg,
-		}
+		return createWrappedError(msg, err)
 	default:
-		return WrappedErrors{
-			callTrace:callTrace,
-			errs:errs,
-			msg:msg,
-		}
+		return createWrappedErrors(msg, errs...)
 	}
 }
 
