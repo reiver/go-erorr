@@ -23,8 +23,20 @@ Use [Wrap] to annotate your core errors and other errors.
 		)
 	}
 
-
 Note that error annotations of this type automatically contains a call-trace.
+
+# Contextual Errors
+
+Use [Stamp] to create a contextual error.
+
+	if nil != err {
+		return erorr.Wrap("API request failed.",
+			field.String("request-uri", requestURI),
+			field.String("service", "monitor"),
+		)
+	}
+
+Note that [Stamp] is similar to [Wrap], with the difference being that, [Stamp] does not wrap another error.
 */
 package erorr
 
