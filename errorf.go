@@ -27,7 +27,7 @@ func Errorf(format string, a ...any) error {
 
 		return WrapError(err, msg)
 	default:
-		return createWrappedErrors(msg, errs...)
+		return WrapErrors(errs, msg)
 	}
 }
 
