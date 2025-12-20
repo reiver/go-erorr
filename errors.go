@@ -1,36 +1,27 @@
 package erorr
 
-import (
-	"bytes"
-)
+type Errors []error
 
-type Errors interface {
-	Error() string
-	Errors() []error
-}
-
-type internalErrors struct {
-	errors []error
-}
-
-func New(errors ...error) Errors {
-	return &internalErrors{
-		errors: errors,
-	}
-}
-
-func (errors *internalErrors) Errors() []error {
-	return errors.errors
-}
-
-func (errors *internalErrors) Error() string {
-	var buffer bytes.Buffer
-
-		for _, err := range errors.errors {
-		buffer.WriteString(err.Error())
-		buffer.WriteRune('\n')
+func (receiver Errors) Errors() []error {
+	if len([]error(receiver)) <= 0 {
+		return nil
 	}
 
-	return buffer.String()
+	return append([]error(nil), []error(receiver)...)
 }
 
+func (receiver Errors) Error() string {
+	var buffer [256]byte
+	var p []byte = buffer[0:0]
+
+	for _, err := range []error(receiver) {
+		if nil == err {
+			continue
+		}
+
+		p = append(p, err.Error()...)
+		p = append(p, '\n')
+	}
+
+	return string(p)
+}
