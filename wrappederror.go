@@ -1,23 +1,30 @@
 package erorr
 
 import (
+	"codeberg.org/reiver/go-field"
 	"github.com/reiver/go-calltrace"
 )
 
 type WrappedError struct {
 	callTrace string
 	err       error
+	fields    []field.Field[string]
 	msg       string
 }
 
-func createWrappedError(msg string, err error) WrappedError {
+func WrapError(err error, msg string, fields ...field.Field[string]) WrappedError {
 	callTrace := calltrace.String()
 
 	return WrappedError{
 		callTrace:callTrace,
 		err:err,
+		fields:fields,
 		msg:msg,
 	}
+}
+
+func Wrap(err error, msg string, fields ...field.Field[string]) error {
+        return WrapError(err, msg, fields...)
 }
 
 func (receiver WrappedError) CallTrace() string {
@@ -26,6 +33,10 @@ func (receiver WrappedError) CallTrace() string {
 
 func (receiver WrappedError) Error() string {
 	return receiver.msg
+}
+
+func (receiver WrappedError) Fields() []field.Field[string] {
+	return receiver.fields
 }
 
 func (receiver WrappedError) Unwrap() error {

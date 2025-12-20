@@ -25,7 +25,7 @@ func Errorf(format string, a ...any) error {
 	case 1:
 		err := errs[0]
 
-		return createWrappedError(msg, err)
+		return WrapError(err, msg)
 	default:
 		return createWrappedErrors(msg, errs...)
 	}
