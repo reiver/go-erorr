@@ -3,8 +3,6 @@ package erorr
 import (
 	"fmt"
 	"strings"
-
-	"github.com/reiver/go-calltrace"
 )
 
 // Errorf returns a formatted error.
@@ -15,8 +13,6 @@ import (
 // If there are no errors, then a [StampedError] is returned.
 func Errorf(format string, a ...any) error {
 
-	callTrace := calltrace.String()
-
 	format = strings.ReplaceAll(format, "%w", "%s")
 
 	msg := fmt.Sprintf(format, a...)
@@ -25,10 +21,7 @@ func Errorf(format string, a ...any) error {
 
 	switch len(errs) {
 	case 0:
-		return StampedError{
-			callTrace:callTrace,
-			msg:msg,
-		}
+		return StampError(msg)
 	case 1:
 		err := errs[0]
 
