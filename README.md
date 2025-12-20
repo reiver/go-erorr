@@ -18,25 +18,72 @@ Eventually, package `fck` was renamed to package `erorr` — and later the conce
 Later, package `erorr` provides tool for creating error annotations and contextual errors.
 And, finally, package `erorr` switched to using `Unwrap() error` and `Unwrap() []error` methods to match the conventions in the built-in Golang `"errors"` package.
 
-## Creating Errors
+## Example
 
-There are two ways to create errors —
+Here are some examples.
 
-With `erorr.Error`:
+### Core Errors
 
+Create your **core errors** with source-code similar to the following:
+
+```golang
+const (
+	ErrNilReceiver = erorr.Error("nil receiver")
+	ErrNotFound    = erorr.Error("not found")
+	ErrUndefined   = erorr.Error("undefined")
+)
 ```
-	const err error = erorr.Error("internal-error")
+
+Notice that a `const` was used (rather than a `var`).
+
+### Annotated Errors
+
+Create an **annotated error** with source-code similar to the following:
+
+```golang
+if nil != err {
+	return erorr.Wrap(err, "API request failed.",
+		field.String("request-uri", requestURI),
+		field.String("service", "monitor"),
+	)
+}
 ```
 
-**NOTICE THAT THAT ERROR IS A `const` RATHER THAN A `var`.**
+### Contextual Errors
 
-**Errors creating using `erorr.Error` can be a Go `const`.**
+Create a **contextual error** with source-code similar to the following:
 
-And with `erorr.Errorf`:
-
+```golang
+if nil != err {
+	return erorr.Wrap("API request failed.",
+		field.String("request-uri", requestURI),
+		field.String("service", "monitor"),
+	)
+}
 ```
-	var err error = erorr.Errorf("bad value for id %q", id)
+
+Note that `erorr.Stamp()` is similar to `erorr.Wrap()`, with the difference being that, `erorr.Stamp()` does not wrap another error.
+
+### Errorf
+
+The function `erorr.Errorf()` is also available.
+For example:
+
+```golang
+if !isValidID(id) {
+	return erorr.Errorf("bad value for id %q", id)
+}
 ```
+
+Or also, for example:
+
+```golang
+if nil != err {
+	return erorr.Errorf("Uh oh, something bad happened to %s: %w", service, err)
+}
+```
+
+Note that a different because this package's `erorr.Errorf()` function and the `fmt.Errorf()` in the built-in Go `"fmt"` package is that the error returned from this package's `erorr.Errorf()` function will include a call-trace and other annotation and contextual information.
 
 ## Import
 
