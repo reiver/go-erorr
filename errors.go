@@ -2,14 +2,6 @@ package erorr
 
 type Errors []error
 
-func (receiver Errors) Errors() []error {
-	if len([]error(receiver)) <= 0 {
-		return nil
-	}
-
-	return append([]error(nil), []error(receiver)...)
-}
-
 func (receiver Errors) Error() string {
 	var buffer [256]byte
 	var p []byte = buffer[0:0]
@@ -24,4 +16,21 @@ func (receiver Errors) Error() string {
 	}
 
 	return string(p)
+}
+
+// Before Go added support for:
+//
+//	Unwrap() []error
+//
+// This method was called:
+//
+//	Errors() []error
+//
+// But was renamed.
+func (receiver Errors) Unwrap() []error {
+	if len([]error(receiver)) <= 0 {
+		return nil
+	}
+
+	return append([]error(nil), []error(receiver)...)
 }
