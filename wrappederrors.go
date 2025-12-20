@@ -31,6 +31,10 @@ func (receiver WrappedErrors) Error() string {
 	return receiver.msg
 }
 
+func (receiver WrappedErrors) Fields() []field.Field[string] {
+	return receiver.fields
+}
+
 func (receiver WrappedErrors) Unwrap() []error {
 	return receiver.errs
 }
