@@ -1,5 +1,7 @@
 package erorr
 
+// Error is a simple error type.
+//
 // Error is implemented in a way such that you can create `const` errors.
 //
 // For example:
