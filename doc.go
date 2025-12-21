@@ -25,6 +25,17 @@ Use [Wrap] to annotate your core errors and other errors.
 
 Note that error annotations of this type automatically contains a call-trace.
 
+You can also annotate multiple errors:
+
+	var errs []error
+	
+	// ...
+	
+	return erorr.Wrap(erorr.Errors(errs), "API request failed.",
+		field.String("request-uri", requestURI),
+		field.String("service", "monitor"),
+	)
+
 # Contextual Errors
 
 Use [Stamp] to create a contextual error.
