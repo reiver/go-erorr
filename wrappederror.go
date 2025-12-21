@@ -23,10 +23,6 @@ func WrapError(err error, msg string, fields ...field.Field[string]) WrappedErro
 	}
 }
 
-func Wrap(err error, msg string, fields ...field.Field[string]) error {
-        return WrapError(err, msg, fields...)
-}
-
 func (receiver WrappedError) CallTrace() string {
 	return receiver.callTrace
 }
